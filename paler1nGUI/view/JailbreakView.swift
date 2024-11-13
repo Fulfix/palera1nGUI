@@ -11,7 +11,7 @@ struct JailbreakView: View {
     func runterminal(file: String) {
         let process = Process()
         process.launchPath = "/usr/bin/python3"
-        
+
         // Use the 'file' variable to get the full path
         if let scriptPath = Bundle.main.path(forResource: file, ofType: "py") {
             process.arguments = [scriptPath]
@@ -25,7 +25,7 @@ struct JailbreakView: View {
     var body: some View {
         ScrollView {
             VStack {
-               
+
                 // Instruction text for installation
                 Text("⚠️ Before proceeding, ensure that Palera1n is installed on your system. You can install it by running the following command in your terminal:")
                     .font(.headline)
@@ -52,11 +52,11 @@ struct JailbreakView: View {
                             .cornerRadius(10)
                     }
                     .buttonStyle(PlainButtonStyle())
-                   
-                    
+
+
                 }
 
-                
+
 
 
 
@@ -73,7 +73,7 @@ struct JailbreakView: View {
                                 .font(.title)
                                 .foregroundColor(.white) // Text color
                                 .padding(.top) // Top padding for text
-                            
+
                             Text("Install the rootless jailbreak. This mode keeps the system partition untouched, providing a more stable experience.")
                                 .font(.subheadline)
                                 .foregroundColor(.white) // Text color
@@ -96,7 +96,7 @@ struct JailbreakView: View {
                                 .font(.title)
                                 .foregroundColor(.white) // Text color
                                 .padding(.top) // Top padding for text
-                            
+
                             Text("Install the rootfull jailbreak. This mode modifies the system partition, allowing deeper customizations.")
                                 .font(.subheadline)
                                 .foregroundColor(.white) // Text color
@@ -110,6 +110,31 @@ struct JailbreakView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                 }
+                HStack {
+                    Button(action: {
+                        runterminal(file: "APFS")
+                    }){
+                        VStack {
+                            Text("create APFS volume")
+                                .font(.title)
+                                .foregroundColor(.white) // Text color
+                                .padding(.top) // Top padding for text
+                            
+                            Text("Remove the rootless jailbreak. This will restore the device to its previous state without altering the system partition.")
+                                .font(.subheadline)
+                                .foregroundColor(.white) // Text color
+                                .multilineTextAlignment(.center)
+                                .padding([.top, .leading, .trailing], 5.0) // Padding for description
+                        }
+                        .frame(width: 300, height: 150)
+                        .background(Color("AccentColor")) // Background color
+                        .cornerRadius(20) // Rounded corners
+                        .padding()
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+
+                }
 
                 HStack {
                     // Delete Rootfull Button
@@ -121,7 +146,7 @@ struct JailbreakView: View {
                                 .font(.title)
                                 .foregroundColor(.white) // Text color
                                 .padding(.top) // Top padding for text
-                            
+
                             Text("Remove the rootfull jailbreak. This will restore the device to its original state.")
                                 .font(.subheadline)
                                 .foregroundColor(.white) // Text color
@@ -144,7 +169,7 @@ struct JailbreakView: View {
                                 .font(.title)
                                 .foregroundColor(.white) // Text color
                                 .padding(.top) // Top padding for text
-                            
+
                             Text("Remove the rootless jailbreak. This will restore the device to its previous state without altering the system partition.")
                                 .font(.subheadline)
                                 .foregroundColor(.white) // Text color
@@ -157,7 +182,6 @@ struct JailbreakView: View {
                         .padding()
                     }
                     .buttonStyle(PlainButtonStyle())
-                }
             }
             .padding()
         }

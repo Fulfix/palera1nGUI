@@ -3,6 +3,7 @@ import SwiftUI
 struct GuideView: View {
     var body: some View {
         ScrollView {
+            Spacer()
             VStack(alignment: .leading, spacing: 20) {
                 // Main title
                 Text("Palera1n GUI Guide")

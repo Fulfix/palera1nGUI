@@ -2,13 +2,12 @@ import SwiftUI
 
 struct ContentView: View {
     enum Destination: Hashable {
-        case status
         case jailbreak
         case guide
     }
     
-    @State private var selectedView: Destination? = .status
-
+    @State private var selectedView: Destination? = .jailbreak
+    
     init() {
         // Appeler cette fonction dans le constructeur pour vérifier le premier lancement
         executeScriptIfFirstLaunch()
@@ -35,19 +34,16 @@ struct ContentView: View {
             process.waitUntilExit()
         }
     }
-
+    
     var body: some View {
         NavigationSplitView {
             // Barre latérale
             List(selection: $selectedView) {
-                NavigationLink(value: Destination.status) {
-                    Text("Device info")
-                }
                 NavigationLink(value: Destination.jailbreak) {
                     Text("Jailbreak")
                 }
                 NavigationLink(value: Destination.guide) {
-                    Text("Guilde")
+                    Text("Guide")
                 }
             }
             .listStyle(SidebarListStyle()) // Style de la barre latérale
@@ -55,22 +51,18 @@ struct ContentView: View {
         } detail: {
             // Contenu principal, qui change en fonction de la sélection
             switch selectedView {
-            case .status:
-                Status_iPhoneView()
             case .jailbreak:
                 JailbreakView()
             case .guide:
                 GuideView()
-            case .none:
-                Text("Sélectionnez une option")
+            case nil:
+                Text("Aucune vue sélectionnée")
             }
         }
-        .onAppear {
-            // Si besoin de logiques supplémentaires lorsque la vue apparaît
-        }
     }
-}
 
-#Preview {
-    ContentView()
+    
+    #Preview {
+        ContentView()
+    }
 }
