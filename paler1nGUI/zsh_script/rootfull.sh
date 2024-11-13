@@ -1,2 +1,2 @@
 #!/bin/zsh
-palera1n -f -c && palera1n -f
+palera1n -f
