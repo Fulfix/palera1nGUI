@@ -120,7 +120,7 @@ struct JailbreakView: View {
                                 .foregroundColor(.white) // Text color
                                 .padding(.top) // Top padding for text
                             
-                            Text("Remove the rootless jailbreak. This will restore the device to its previous state without altering the system partition.")
+                            Text("Create a new APFS volume need for device on ios 15.4 and later.")
                                 .font(.subheadline)
                                 .foregroundColor(.white) // Text color
                                 .multilineTextAlignment(.center)
